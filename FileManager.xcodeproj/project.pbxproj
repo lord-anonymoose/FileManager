@@ -12,6 +12,8 @@
 		8E210A952C3417AE00923D7A /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E210A942C3417AE00923D7A /* FolderViewController.swift */; };
 		8E210A9A2C3417AF00923D7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E210A992C3417AF00923D7A /* Assets.xcassets */; };
 		8E210A9D2C3417AF00923D7A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8E210A9C2C3417AF00923D7A /* Base */; };
+		8E63D7FA2C342304003BD591 /* FolderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63D7F92C342304003BD591 /* FolderService.swift */; };
+		8E63D7FC2C347259003BD591 /* ComponentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63D7FB2C347259003BD591 /* ComponentViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		8E210A992C3417AF00923D7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E210A9C2C3417AF00923D7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E210A9E2C3417AF00923D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E63D7F92C342304003BD591 /* FolderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderService.swift; sourceTree = "<group>"; };
+		8E63D7FB2C347259003BD591 /* ComponentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				8E210AA42C341D9500923D7A /* Delegates */,
 				8E210A942C3417AE00923D7A /* FolderViewController.swift */,
+				8E63D7FB2C347259003BD591 /* ComponentViewCell.swift */,
+				8E63D7F92C342304003BD591 /* FolderService.swift */,
 				8E210A992C3417AF00923D7A /* Assets.xcassets */,
 				8E210A9B2C3417AF00923D7A /* LaunchScreen.storyboard */,
 				8E210A9E2C3417AF00923D7A /* Info.plist */,
@@ -144,7 +150,9 @@
 			files = (
 				8E210A952C3417AE00923D7A /* FolderViewController.swift in Sources */,
 				8E210A912C3417AE00923D7A /* AppDelegate.swift in Sources */,
+				8E63D7FC2C347259003BD591 /* ComponentViewCell.swift in Sources */,
 				8E210A932C3417AE00923D7A /* SceneDelegate.swift in Sources */,
+				8E63D7FA2C342304003BD591 /* FolderService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

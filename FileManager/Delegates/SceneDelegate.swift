@@ -19,7 +19,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController()
         let folderViewController = FolderViewController()
-        
         navigationController.pushViewController(folderViewController, animated: true)
             
         window.rootViewController = navigationController
