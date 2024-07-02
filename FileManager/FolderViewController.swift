@@ -134,6 +134,16 @@ extension FolderViewController: UITableViewDataSource, UITableViewDelegate {
         return 64
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        directoryService.remove(at: indexPath.row)
+        self.directoryTableView.reloadData()
+        
+    }
+    
     private func setupDelegates() {
         directoryTableView.dataSource = self
         directoryTableView.delegate = self

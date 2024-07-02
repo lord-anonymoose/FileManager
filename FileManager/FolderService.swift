@@ -54,12 +54,14 @@ class DirectoryService {
         }
     }
     
-    func removeFile(at index: Int) {
+    func remove(at index: Int) {
+        let url = directoryContentURL()[index]
+        do {
+            try FileManager.default.removeItem(at: url)
+        } catch {
+            print("Error removing \(url.lastPathComponent)")
+        }
         print("File removed")
-    }
-    
-    func removeDirectory(at index: Int) {
-        print("Folder removed")
     }
     
     func directoryContentURL() -> [URL] {
