@@ -24,6 +24,14 @@ class FolderViewController: UIViewController {
         return tableView
     }()
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.handleRefresh(_:)), for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor(named: "AccentColor")
+            
+        return refreshControl
+    }()
+    
     
     
     // MARK: - Lifecycle
@@ -55,13 +63,17 @@ class FolderViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc func addDirectoryButtonTapped(_ textField: UITextField) {
+    @objc func addDirectoryButtonTapped(_ button: UIButton) {
         let ac = UIAlertController(title: "Enter Directory name", message: nil, preferredStyle: .alert)
+        ac.view.tintColor = UIColor(named: "AccentColor")
         ac.addTextField()
         
         let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
-            // do something interesting with "answer" here
             if let directoryName = ac.textFields![0].text {
+                guard directoryName != "" else {
+                    self.showAlert(message: "Directory name can't be empty!")
+                    return
+                }
                 self.directoryService.addDirectory(named: directoryName)
                 self.directoryTableView.reloadData()
             } else {
@@ -76,20 +88,20 @@ class FolderViewController: UIViewController {
         print("addDirectoryButtonTapped")
     }
     
-    @objc func addPhotoButtonTapped(_ textField: UITextField) {
-        print("addPhotoButtonTapped")
+    @objc func addPhotoButtonTapped(_ button: UIButton) {
+        showAlert(message: "Not working yet")
     }
     
     
     // MARK: - Private
     private func setupUI() {
         view.backgroundColor = .systemBackground
-        //print(directoryService.directoryContentString())
     }
     
     private func setupNavigationBar() {
         self.navigationItem.title = directoryService.currentDirectoryString()
         print(directoryService.url)
+        
         
         let addDirectoryImage = UIImage(systemName: "folder.fill.badge.plus")
         let addDirectoryButton = UIBarButtonItem(image: addDirectoryImage, style: .plain, target: self, action: #selector(addDirectoryButtonTapped))
@@ -98,12 +110,11 @@ class FolderViewController: UIViewController {
         let addImageButton = UIBarButtonItem(image: addPhotoImage, style: .plain, target: self, action: #selector(addPhotoButtonTapped))
         
         navigationItem.rightBarButtonItems = [addImageButton, addDirectoryButton]
-
-
     }
     
     private func addSubviews() {
         view.addSubview(directoryTableView)
+        directoryTableView.addSubview(refreshControl)
     }
 
     private func setupConstraints() {
@@ -134,6 +145,17 @@ extension FolderViewController: UITableViewDataSource, UITableViewDelegate {
         return 64
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedURL = directoryService.directoryContentURL()[indexPath.row]
+        if selectedURL.isDirectory {
+            let vc = FolderViewController(url: selectedURL)
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            print("Can't open files yet")
+        }
+    }
+    
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
@@ -148,6 +170,22 @@ extension FolderViewController: UITableViewDataSource, UITableViewDelegate {
         directoryTableView.dataSource = self
         directoryTableView.delegate = self
         directoryTableView.register(UITableViewCell.self, forCellReuseIdentifier: "DirectoryTableViewCell")
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        self.directoryTableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+}
+
+
+
+extension FolderViewController {
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.view.tintColor = UIColor(named: "AccentColor")
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
