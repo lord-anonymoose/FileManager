@@ -81,7 +81,10 @@ class FolderViewController: UIViewController {
             }
         }
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {_ in }
+        
         ac.addAction(submitAction)
+        ac.addAction(cancelAction)
 
         
         present(ac, animated: true)
