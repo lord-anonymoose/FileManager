@@ -29,16 +29,29 @@ class DirectoryService {
         
     }
     
-    func currentDirectory() -> String {
+    func currentDirectoryString() -> String {
         return url.lastPathComponent
+    }
+    
+    func currentDirectoryURL() -> URL {
+        return URL(fileURLWithPath: "")
     }
 
     func addFile() {
         print("File added")
     }
     
-    func addDirectory() {
-        print("Folder added")
+    func addDirectory(named name: String) {
+        //if let path = String(contentsOf: url).appending(name) {
+            
+        //}
+        
+        let newUrl = url.appendingPathComponent(name)
+        do {
+            try FileManager.default.createDirectory(atPath: newUrl.path, withIntermediateDirectories: true)
+        } catch {
+            print("Error!")
+        }
     }
     
     func removeFile(at index: Int) {

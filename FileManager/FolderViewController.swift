@@ -56,6 +56,23 @@ class FolderViewController: UIViewController {
     // MARK: - Actions
     
     @objc func addDirectoryButtonTapped(_ textField: UITextField) {
+        let ac = UIAlertController(title: "Enter Directory name", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { [unowned ac] _ in
+            // do something interesting with "answer" here
+            if let directoryName = ac.textFields![0].text {
+                self.directoryService.addDirectory(named: directoryName)
+                self.directoryTableView.reloadData()
+            } else {
+                print("Error!")
+            }
+        }
+        
+        ac.addAction(submitAction)
+
+        
+        present(ac, animated: true)
         print("addDirectoryButtonTapped")
     }
     
@@ -71,7 +88,7 @@ class FolderViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        self.navigationItem.title = directoryService.currentDirectory()
+        self.navigationItem.title = directoryService.currentDirectoryString()
         print(directoryService.url)
         
         let addDirectoryImage = UIImage(systemName: "folder.fill.badge.plus")
