@@ -98,8 +98,10 @@ class SetPasswordViewController: UIViewController {
                 guard loginService.passwordExists() else {
                     let loginCoordinator = LoginCoordinator(navigationController: navController)
                     loginCoordinator.start()
+                    loginService.setPassword(password: self.passwordInputContainer.password())
                     return
                 }
+                loginService.setPassword(password: self.passwordInputContainer.password())
             }
         })
     }

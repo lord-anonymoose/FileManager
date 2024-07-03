@@ -24,6 +24,8 @@
 		8E63D7FA2C342304003BD591 /* FolderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63D7F92C342304003BD591 /* FolderService.swift */; };
 		8E63D7FC2C347259003BD591 /* ComponentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63D7FB2C347259003BD591 /* ComponentViewCell.swift */; };
 		8E9454572C35C09E003C336F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9454562C35C09E003C336F /* CustomButton.swift */; };
+		8E94545C2C35EE63003C336F /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94545B2C35EE63003C336F /* KeychainItemAccessibility.swift */; };
+		8E94545E2C35EE80003C336F /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94545D2C35EE80003C336F /* KeychainWrapper.swift */; };
 		8ECDE9AB2C353D43009C5922 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE9AA2C353D43009C5922 /* PhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,8 @@
 		8E63D7F92C342304003BD591 /* FolderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderService.swift; sourceTree = "<group>"; };
 		8E63D7FB2C347259003BD591 /* ComponentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewCell.swift; sourceTree = "<group>"; };
 		8E9454562C35C09E003C336F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		8E94545B2C35EE63003C336F /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		8E94545D2C35EE80003C336F /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		8ECDE9AA2C353D43009C5922 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +84,7 @@
 		8E210A8F2C3417AE00923D7A /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
+				8E94545A2C35EE4B003C336F /* KeychainTools */,
 				8E210AA42C341D9500923D7A /* Delegates */,
 				8ECDE9AD2C3541EE009C5922 /* Views */,
 				8ECDE9AE2C3541FE009C5922 /* Services */,
@@ -98,6 +103,15 @@
 				8E210A922C3417AE00923D7A /* SceneDelegate.swift */,
 			);
 			path = Delegates;
+			sourceTree = "<group>";
+		};
+		8E94545A2C35EE4B003C336F /* KeychainTools */ = {
+			isa = PBXGroup;
+			children = (
+				8E94545B2C35EE63003C336F /* KeychainItemAccessibility.swift */,
+				8E94545D2C35EE80003C336F /* KeychainWrapper.swift */,
+			);
+			path = KeychainTools;
 			sourceTree = "<group>";
 		};
 		8ECDE9AC2C3541DC009C5922 /* ViewControllers */ = {
@@ -211,8 +225,10 @@
 				8E210A952C3417AE00923D7A /* FolderViewController.swift in Sources */,
 				8E9454572C35C09E003C336F /* CustomButton.swift in Sources */,
 				8E3389302C3568C400F70728 /* LogInViewControlller.swift in Sources */,
+				8E94545C2C35EE63003C336F /* KeychainItemAccessibility.swift in Sources */,
 				8E33893C2C3574A000F70728 /* UITextFieldWithPadding.swift in Sources */,
 				8E210A912C3417AE00923D7A /* AppDelegate.swift in Sources */,
+				8E94545E2C35EE80003C336F /* KeychainWrapper.swift in Sources */,
 				8E63D7FC2C347259003BD591 /* ComponentViewCell.swift in Sources */,
 				8E3389362C356B7A00F70728 /* Extensions.swift in Sources */,
 				8E3389382C356BE500F70728 /* LoginService.swift in Sources */,

@@ -9,14 +9,24 @@ import Foundation
 
 class LoginService {
     func passwordExists() -> Bool {
-        return true
+        if let text = KeychainWrapper.standard.string(forKey: "FileManagerPassword") {
+            print(text)
+            return true
+        } else {
+            return false
+        }
     }
     
     func passwordIsCorrect(password: String) -> Bool {
-        return true
+        if let text = KeychainWrapper.standard.string(forKey: "FileManagerPassword") {
+            if password == text {
+                return true
+            }
+        }
+        return false
     }
     
     func setPassword(password: String) {
-        
+        KeychainWrapper.standard.set(password, forKey: "FileManagerPassword")
     }
 }
