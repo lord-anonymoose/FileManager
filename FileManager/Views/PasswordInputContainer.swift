@@ -126,7 +126,7 @@ final class PasswordInputContainer: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            dividingLine.topAnchor.constraint(equalTo: firstPasswordTextField.bottomAnchor),
+            dividingLine.topAnchor.constraint(equalTo: firstPasswordTextField.bottomAnchor, constant: -0.25),
             dividingLine.heightAnchor.constraint(equalToConstant: 0.5),
             dividingLine.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             dividingLine.trailingAnchor.constraint(equalTo: self.trailingAnchor)
