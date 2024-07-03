@@ -13,7 +13,7 @@ class LoginService {
     }
     
     func passwordIsCorrect(password: String) -> Bool {
-        return false
+        return true
     }
     
     func setPassword(password: String) {

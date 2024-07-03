@@ -23,6 +23,19 @@ class SetPasswordViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    private lazy var contentView: UIView = {
+        let contentView = UIView()
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.isUserInteractionEnabled = true
+        return contentView
+    }()
+    
     private lazy var passwordInputContainer: PasswordInputContainer = {
         let container = PasswordInputContainer()
         return container
@@ -34,6 +47,8 @@ class SetPasswordViewController: UIViewController {
         return button
     }()
     
+    
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,30 +56,51 @@ class SetPasswordViewController: UIViewController {
         setupUI()
         addSubviews()
         setupConstraints()
+        
+        passwordInputContainer.firstPasswordTextField.delegate = self
+        passwordInputContainer.secondPasswordTextField.delegate = self
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupKeyboardObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        removeKeyboardObservers()
+    }
+    
     
     
     // MARK: - Actions
     @objc func setPasswordButtonTapped(_ button: UIButton) {
-        guard self.passwordInputContainer.passwordsMatch() else {
-            self.showAlert(message: "Passwords do not match!")
+        guard passwordInputContainer.passwordsMatch() else {
+            showAlert(message: "Passwords do not match!")
             return
         }
         
-        guard self.passwordInputContainer.passwordLengthMatch() else {
-            self.showAlert(message: "Password should contain at least 4 characters")
+        guard passwordInputContainer.passwordLengthMatch() else {
+            showAlert(message: "Password should contain at least 4 characters")
             return
         }
         
-        let loginService = LoginService()
-        
-        loginService.setPassword(password: self.passwordInputContainer.password())
-        
-        if let navController = navigationController {
-            let loginCoordinator = LoginCoordinator(navigationController: navController)
-            loginCoordinator.start()
+        guard let navController = navigationController else {
+            showAlert(message: "Couldn't load UINavigationController!")
+            return
         }
+                
+        UIView.transition(with: emojiView,
+                          duration: 1.0,
+                          options: .curveEaseInOut,
+                          animations: { self.emojiView.image = UIImage(systemName: "checkmark.seal.fill") },
+                          completion: {_ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                let loginCoordinator = LoginCoordinator(navigationController: navController)
+                loginCoordinator.start()
+            }
+        })
     }
+    
     
     
     // MARK: - Private
@@ -75,31 +111,101 @@ class SetPasswordViewController: UIViewController {
     
     private func addSubviews() {
         view.addSubview(emojiView)
-        view.addSubview(passwordInputContainer)
-        view.addSubview(setPasswordButton)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(passwordInputContainer)
+        contentView.addSubview(setPasswordButton)
     }
     
     private func setupConstraints() {
         let safeAreaGuide = view.safeAreaLayoutGuide
-        
+
         NSLayoutConstraint.activate([
             emojiView.centerYAnchor.constraint(equalTo: safeAreaGuide.centerYAnchor, constant: -200),
             emojiView.heightAnchor.constraint(equalToConstant: 200),
-            emojiView.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor),
+            emojiView.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor)
         ])
-        
+
         NSLayoutConstraint.activate([
-            passwordInputContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            passwordInputContainer.topAnchor.constraint(equalTo: emojiView.bottomAnchor, constant: 150),
-            passwordInputContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            passwordInputContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            scrollView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor)
         ])
-        
+
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            passwordInputContainer.topAnchor.constraint(equalTo: contentView.centerYAnchor, constant: 150),
+            passwordInputContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            passwordInputContainer.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            passwordInputContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
+        ])
+
         NSLayoutConstraint.activate([
             setPasswordButton.topAnchor.constraint(equalTo: passwordInputContainer.bottomAnchor, constant: 20),
             setPasswordButton.heightAnchor.constraint(equalToConstant: 40),
-            setPasswordButton.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 20),
-            setPasswordButton.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -20)
+            setPasswordButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
+            setPasswordButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            setPasswordButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20)
         ])
+    }
+}
+
+
+
+extension SetPasswordViewController: UITextFieldDelegate {
+    
+    
+    
+    // MARK: - Actions
+    @objc func willShowKeyboard(_ notification: NSNotification) {
+        let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
+        scrollView.contentInset.bottom = 0.0
+        scrollView.contentInset.bottom += keyboardHeight ?? 0.0
+    }
+    
+    @objc func willHideKeyboard(_ notification: NSNotification) {
+        scrollView.contentInset.bottom = 0.0
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    
+    // MARK: - Private
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // This dismisses the keyboard
+        return true
+    }
+    
+    private func setupKeyboardObservers() {
+        let notificationCenter = NotificationCenter.default
+        
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(self.willShowKeyboard(_:)),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(self.willHideKeyboard(_:)),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    private func removeKeyboardObservers() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self)
     }
 }

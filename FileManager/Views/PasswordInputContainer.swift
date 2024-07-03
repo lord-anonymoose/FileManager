@@ -14,7 +14,7 @@ final class PasswordInputContainer: UIView {
     
     // MARK: - Subviews
     
-    private lazy var firstPasswordTextField: UITextField = {
+    lazy var firstPasswordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Password"
         textField.isSecureTextEntry = true
@@ -33,7 +33,7 @@ final class PasswordInputContainer: UIView {
         return button
     }()
     
-    private lazy var secondPasswordTextField: UITextField = {
+    lazy var secondPasswordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Repeat password"
         textField.isSecureTextEntry = true
