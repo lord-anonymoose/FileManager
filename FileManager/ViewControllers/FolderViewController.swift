@@ -193,15 +193,6 @@ extension FolderViewController: UITableViewDataSource, UITableViewDelegate {
 
 
 
-extension FolderViewController {
-    private func showAlert(message: String) {
-        let alert = UIAlertController(title: "Error!", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        alert.view.tintColor = UIColor(named: "AccentColor")
-        self.present(alert, animated: true, completion: nil)
-    }
-}
-
 extension FolderViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else {

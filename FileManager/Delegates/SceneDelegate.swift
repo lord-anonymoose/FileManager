@@ -18,8 +18,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
         
         let navigationController = UINavigationController()
-        let folderViewController = FolderViewController()
-        navigationController.pushViewController(folderViewController, animated: true)
+        
+        let loginService = LoginService()
+        var viewController: UIViewController
+        
+        if loginService.passwordExists() {
+            viewController = LogInViewControlller()
+        } else {
+            viewController = SetPasswordViewController()
+        }
+        
+        navigationController.pushViewController(viewController, animated: true)
             
         window.rootViewController = navigationController
         window.makeKeyAndVisible()

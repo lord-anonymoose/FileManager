@@ -12,6 +12,13 @@
 		8E210A952C3417AE00923D7A /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E210A942C3417AE00923D7A /* FolderViewController.swift */; };
 		8E210A9A2C3417AF00923D7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E210A992C3417AF00923D7A /* Assets.xcassets */; };
 		8E210A9D2C3417AF00923D7A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8E210A9C2C3417AF00923D7A /* Base */; };
+		8E3389302C3568C400F70728 /* LogInViewControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E33892F2C3568C400F70728 /* LogInViewControlller.swift */; };
+		8E3389322C3568DD00F70728 /* SetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3389312C3568DD00F70728 /* SetPasswordViewController.swift */; };
+		8E3389342C3568E600F70728 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3389332C3568E600F70728 /* SettingsViewController.swift */; };
+		8E3389362C356B7A00F70728 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3389352C356B7A00F70728 /* Extensions.swift */; };
+		8E3389382C356BE500F70728 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3389372C356BE500F70728 /* LoginService.swift */; };
+		8E33893A2C356BEB00F70728 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3389392C356BEB00F70728 /* StorageService.swift */; };
+		8E33893C2C3574A000F70728 /* UITextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E33893B2C3574A000F70728 /* UITextFieldWithPadding.swift */; };
 		8E63D7FA2C342304003BD591 /* FolderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63D7F92C342304003BD591 /* FolderService.swift */; };
 		8E63D7FC2C347259003BD591 /* ComponentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63D7FB2C347259003BD591 /* ComponentViewCell.swift */; };
 		8ECDE9AB2C353D43009C5922 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE9AA2C353D43009C5922 /* PhotoViewController.swift */; };
@@ -25,6 +32,13 @@
 		8E210A992C3417AF00923D7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E210A9C2C3417AF00923D7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E210A9E2C3417AF00923D7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E33892F2C3568C400F70728 /* LogInViewControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewControlller.swift; sourceTree = "<group>"; };
+		8E3389312C3568DD00F70728 /* SetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordViewController.swift; sourceTree = "<group>"; };
+		8E3389332C3568E600F70728 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8E3389352C356B7A00F70728 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8E3389372C356BE500F70728 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		8E3389392C356BEB00F70728 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		8E33893B2C3574A000F70728 /* UITextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldWithPadding.swift; sourceTree = "<group>"; };
 		8E63D7F92C342304003BD591 /* FolderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderService.swift; sourceTree = "<group>"; };
 		8E63D7FB2C347259003BD591 /* ComponentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewCell.swift; sourceTree = "<group>"; };
 		8ECDE9AA2C353D43009C5922 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +99,9 @@
 			children = (
 				8E210A942C3417AE00923D7A /* FolderViewController.swift */,
 				8ECDE9AA2C353D43009C5922 /* PhotoViewController.swift */,
+				8E33892F2C3568C400F70728 /* LogInViewControlller.swift */,
+				8E3389312C3568DD00F70728 /* SetPasswordViewController.swift */,
+				8E3389332C3568E600F70728 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -93,6 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				8E63D7FB2C347259003BD591 /* ComponentViewCell.swift */,
+				8E33893B2C3574A000F70728 /* UITextFieldWithPadding.swift */,
+				8E3389352C356B7A00F70728 /* Extensions.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -101,6 +120,8 @@
 			isa = PBXGroup;
 			children = (
 				8E63D7F92C342304003BD591 /* FolderService.swift */,
+				8E3389372C356BE500F70728 /* LoginService.swift */,
+				8E3389392C356BEB00F70728 /* StorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -175,12 +196,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E3389322C3568DD00F70728 /* SetPasswordViewController.swift in Sources */,
+				8E33893A2C356BEB00F70728 /* StorageService.swift in Sources */,
 				8E210A952C3417AE00923D7A /* FolderViewController.swift in Sources */,
+				8E3389302C3568C400F70728 /* LogInViewControlller.swift in Sources */,
+				8E33893C2C3574A000F70728 /* UITextFieldWithPadding.swift in Sources */,
 				8E210A912C3417AE00923D7A /* AppDelegate.swift in Sources */,
 				8E63D7FC2C347259003BD591 /* ComponentViewCell.swift in Sources */,
+				8E3389362C356B7A00F70728 /* Extensions.swift in Sources */,
+				8E3389382C356BE500F70728 /* LoginService.swift in Sources */,
 				8E210A932C3417AE00923D7A /* SceneDelegate.swift in Sources */,
 				8E63D7FA2C342304003BD591 /* FolderService.swift in Sources */,
 				8ECDE9AB2C353D43009C5922 /* PhotoViewController.swift in Sources */,
+				8E3389342C3568E600F70728 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

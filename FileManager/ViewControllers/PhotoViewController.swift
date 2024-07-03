@@ -77,10 +77,9 @@ class PhotoViewController: UIViewController {
     private func setupConstraints() {
         let safeAreaGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: safeAreaGuide.centerYAnchor),
+            imageView.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor),
             imageView.widthAnchor.constraint(equalTo: safeAreaGuide.widthAnchor),
-            //imageView.widthAnchor.constraint(equalToConstant: 300)
         ])
     }
     
