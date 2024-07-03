@@ -102,9 +102,7 @@ class FolderViewController: UIViewController {
     }
     
     private func setupNavigationBar() {
-        self.navigationItem.title = directoryService.currentDirectoryString()
-        print(directoryService.url)
-        
+        self.navigationItem.title = directoryService.currentDirectoryString()        
         
         let addDirectoryImage = UIImage(systemName: "folder.fill.badge.plus")
         let addDirectoryButton = UIBarButtonItem(image: addDirectoryImage, style: .plain, target: self, action: #selector(addDirectoryButtonTapped))
@@ -154,9 +152,16 @@ extension FolderViewController: UITableViewDataSource, UITableViewDelegate {
         if selectedURL.isDirectory {
             let vc = FolderViewController(url: selectedURL)
             self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            print("Can't open files yet")
+            return
         }
+        
+        if selectedURL.isPicture {
+            let vc = PhotoViewController(url: selectedURL)
+            self.navigationController?.pushViewController(vc, animated: true)
+            return
+        }
+        
+        showAlert(message: "Can't open this file types yet!")
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
