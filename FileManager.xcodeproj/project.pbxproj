@@ -17,7 +17,6 @@
 		8E3389342C3568E600F70728 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3389332C3568E600F70728 /* SettingsViewController.swift */; };
 		8E3389362C356B7A00F70728 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3389352C356B7A00F70728 /* Extensions.swift */; };
 		8E3389382C356BE500F70728 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3389372C356BE500F70728 /* LoginService.swift */; };
-		8E33893A2C356BEB00F70728 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3389392C356BEB00F70728 /* StorageService.swift */; };
 		8E33893C2C3574A000F70728 /* UITextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E33893B2C3574A000F70728 /* UITextFieldWithPadding.swift */; };
 		8E33893E2C3579B300F70728 /* PasswordInputContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E33893D2C3579B300F70728 /* PasswordInputContainer.swift */; };
 		8E3389402C3589D000F70728 /* CoordinatorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E33893F2C3589D000F70728 /* CoordinatorService.swift */; };
@@ -26,6 +25,7 @@
 		8E9454572C35C09E003C336F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9454562C35C09E003C336F /* CustomButton.swift */; };
 		8E94545C2C35EE63003C336F /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94545B2C35EE63003C336F /* KeychainItemAccessibility.swift */; };
 		8E94545E2C35EE80003C336F /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94545D2C35EE80003C336F /* KeychainWrapper.swift */; };
+		8E9454602C35F19D003C336F /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94545F2C35F19D003C336F /* SettingsService.swift */; };
 		8ECDE9AB2C353D43009C5922 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE9AA2C353D43009C5922 /* PhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,7 +42,6 @@
 		8E3389332C3568E600F70728 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8E3389352C356B7A00F70728 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8E3389372C356BE500F70728 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
-		8E3389392C356BEB00F70728 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		8E33893B2C3574A000F70728 /* UITextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldWithPadding.swift; sourceTree = "<group>"; };
 		8E33893D2C3579B300F70728 /* PasswordInputContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputContainer.swift; sourceTree = "<group>"; };
 		8E33893F2C3589D000F70728 /* CoordinatorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorService.swift; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		8E9454562C35C09E003C336F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		8E94545B2C35EE63003C336F /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		8E94545D2C35EE80003C336F /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		8E94545F2C35F19D003C336F /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		8ECDE9AA2C353D43009C5922 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,8 +143,8 @@
 			children = (
 				8E63D7F92C342304003BD591 /* FolderService.swift */,
 				8E3389372C356BE500F70728 /* LoginService.swift */,
+				8E94545F2C35F19D003C336F /* SettingsService.swift */,
 				8E33893F2C3589D000F70728 /* CoordinatorService.swift */,
-				8E3389392C356BEB00F70728 /* StorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -221,7 +221,6 @@
 			files = (
 				8E3389322C3568DD00F70728 /* SetPasswordViewController.swift in Sources */,
 				8E3389402C3589D000F70728 /* CoordinatorService.swift in Sources */,
-				8E33893A2C356BEB00F70728 /* StorageService.swift in Sources */,
 				8E210A952C3417AE00923D7A /* FolderViewController.swift in Sources */,
 				8E9454572C35C09E003C336F /* CustomButton.swift in Sources */,
 				8E3389302C3568C400F70728 /* LogInViewControlller.swift in Sources */,
@@ -237,6 +236,7 @@
 				8ECDE9AB2C353D43009C5922 /* PhotoViewController.swift in Sources */,
 				8E3389342C3568E600F70728 /* SettingsViewController.swift in Sources */,
 				8E33893E2C3579B300F70728 /* PasswordInputContainer.swift in Sources */,
+				8E9454602C35F19D003C336F /* SettingsService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

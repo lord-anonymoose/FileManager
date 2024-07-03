@@ -61,7 +61,8 @@ class LogInViewControlller: UIViewController {
         setupConstraints()
 
         passwordTextField.delegate = self
-
+        
+        let settingsService = SettingsService()
     }
     
     override func viewWillAppear(_ animated: Bool) {

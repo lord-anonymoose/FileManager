@@ -10,7 +10,6 @@ import Foundation
 class LoginService {
     func passwordExists() -> Bool {
         if let text = KeychainWrapper.standard.string(forKey: "FileManagerPassword") {
-            print(text)
             return true
         } else {
             return false

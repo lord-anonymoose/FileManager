@@ -23,10 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         var viewController: UIViewController
         
         if loginService.passwordExists() {
-            print("Password exists")
             viewController = LogInViewControlller()
         } else {
-            print("Password doesn't exist")
             viewController = SetPasswordViewController()
         }
         

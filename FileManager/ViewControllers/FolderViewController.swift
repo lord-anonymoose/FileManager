@@ -10,6 +10,7 @@ import UIKit
 class FolderViewController: UIViewController {
             
     var directoryService = DirectoryService()
+    var settingsService = SettingsService()
     
     // MARK: - Subviews
     private lazy var activityIndicator: UIActivityIndicatorView = {
@@ -43,8 +44,14 @@ class FolderViewController: UIViewController {
         addSubviews()
         setupConstraints()
         setupDelegates()
+        
+        self.directoryTableView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.directoryTableView.reloadData()
+    }
     
     init(url: URL) {
         self.directoryService = DirectoryService(url: url)
@@ -85,10 +92,8 @@ class FolderViewController: UIViewController {
         
         ac.addAction(submitAction)
         ac.addAction(cancelAction)
-
         
         present(ac, animated: true)
-        print("addDirectoryButtonTapped")
     }
     
     @objc func addPhotoButtonTapped(_ button: UIButton) {
@@ -143,8 +148,15 @@ extension FolderViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ComponentViewCell(style: .default, reuseIdentifier: "cell", url: directoryService.directoryContentURL()[indexPath.row])
-        return cell
+        if settingsService.isAscendingSort() {
+            let urls = directoryService.directoryContentURL().sorted(by: { $0.absoluteString < $1.absoluteString })
+            let cell = ComponentViewCell(style: .default, reuseIdentifier: "cell", url: urls[indexPath.row])
+            return cell
+        } else {
+            let urls = directoryService.directoryContentURL().sorted(by: { $0.absoluteString > $1.absoluteString })
+            let cell = ComponentViewCell(style: .default, reuseIdentifier: "cell", url: urls[indexPath.row])
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -196,7 +208,6 @@ extension FolderViewController: UITableViewDataSource, UITableViewDelegate {
 extension FolderViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let image = info[.originalImage] as? UIImage else {
-            print("Returned")
             return
         }
         
