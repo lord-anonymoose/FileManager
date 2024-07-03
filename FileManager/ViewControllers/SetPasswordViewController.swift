@@ -13,7 +13,6 @@ import UIKit
 class SetPasswordViewController: UIViewController {
     
     
-    
     // MARK: - Subviews
     private lazy var emojiView: UIImageView = {
         let image = UIImage(systemName: "key.fill")
@@ -95,8 +94,12 @@ class SetPasswordViewController: UIViewController {
                           animations: { self.emojiView.image = UIImage(systemName: "checkmark.seal.fill") },
                           completion: {_ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                let loginCoordinator = LoginCoordinator(navigationController: navController)
-                loginCoordinator.start()
+                let loginService = LoginService()
+                guard loginService.passwordExists() else {
+                    let loginCoordinator = LoginCoordinator(navigationController: navController)
+                    loginCoordinator.start()
+                    return
+                }
             }
         })
     }

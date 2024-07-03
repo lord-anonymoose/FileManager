@@ -42,5 +42,10 @@ final class LoginCoordinator {
         navigationController.pushViewController(tabBarController, animated: true)
         self.navigationController.setNavigationBarHidden(true, animated: true)
     }
+    
+    func changePassword() {
+        let setPasswordViewController = SetPasswordViewController()
+        navigationController.pushViewController(setPasswordViewController, animated: true)
+    }
 }
 

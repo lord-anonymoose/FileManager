@@ -104,10 +104,10 @@
 			isa = PBXGroup;
 			children = (
 				8E210A942C3417AE00923D7A /* FolderViewController.swift */,
+				8E3389332C3568E600F70728 /* SettingsViewController.swift */,
 				8ECDE9AA2C353D43009C5922 /* PhotoViewController.swift */,
 				8E33892F2C3568C400F70728 /* LogInViewControlller.swift */,
 				8E3389312C3568DD00F70728 /* SetPasswordViewController.swift */,
-				8E3389332C3568E600F70728 /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
