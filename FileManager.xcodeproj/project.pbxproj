@@ -19,6 +19,7 @@
 		8E3389382C356BE500F70728 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3389372C356BE500F70728 /* LoginService.swift */; };
 		8E33893A2C356BEB00F70728 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3389392C356BEB00F70728 /* StorageService.swift */; };
 		8E33893C2C3574A000F70728 /* UITextFieldWithPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E33893B2C3574A000F70728 /* UITextFieldWithPadding.swift */; };
+		8E33893E2C3579B300F70728 /* PasswordInputContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E33893D2C3579B300F70728 /* PasswordInputContainer.swift */; };
 		8E63D7FA2C342304003BD591 /* FolderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63D7F92C342304003BD591 /* FolderService.swift */; };
 		8E63D7FC2C347259003BD591 /* ComponentViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E63D7FB2C347259003BD591 /* ComponentViewCell.swift */; };
 		8ECDE9AB2C353D43009C5922 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECDE9AA2C353D43009C5922 /* PhotoViewController.swift */; };
@@ -39,6 +40,7 @@
 		8E3389372C356BE500F70728 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		8E3389392C356BEB00F70728 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		8E33893B2C3574A000F70728 /* UITextFieldWithPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldWithPadding.swift; sourceTree = "<group>"; };
+		8E33893D2C3579B300F70728 /* PasswordInputContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordInputContainer.swift; sourceTree = "<group>"; };
 		8E63D7F92C342304003BD591 /* FolderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderService.swift; sourceTree = "<group>"; };
 		8E63D7FB2C347259003BD591 /* ComponentViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewCell.swift; sourceTree = "<group>"; };
 		8ECDE9AA2C353D43009C5922 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				8E63D7FB2C347259003BD591 /* ComponentViewCell.swift */,
 				8E33893B2C3574A000F70728 /* UITextFieldWithPadding.swift */,
+				8E33893D2C3579B300F70728 /* PasswordInputContainer.swift */,
 				8E3389352C356B7A00F70728 /* Extensions.swift */,
 			);
 			path = Views;
@@ -209,6 +212,7 @@
 				8E63D7FA2C342304003BD591 /* FolderService.swift in Sources */,
 				8ECDE9AB2C353D43009C5922 /* PhotoViewController.swift in Sources */,
 				8E3389342C3568E600F70728 /* SettingsViewController.swift in Sources */,
+				8E33893E2C3579B300F70728 /* PasswordInputContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

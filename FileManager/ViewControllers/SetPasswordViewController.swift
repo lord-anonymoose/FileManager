@@ -22,6 +22,11 @@ class SetPasswordViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var passwordInputContainer: PasswordInputContainer = {
+        let container = PasswordInputContainer()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        return container
+    }()
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -46,10 +51,15 @@ class SetPasswordViewController: UIViewController {
     }
     
     private func addSubviews() {
-        
+        view.addSubview(passwordInputContainer)
     }
     
     private func setupConstraints() {
-        let safeAreaGuide = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            passwordInputContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            passwordInputContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            passwordInputContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            passwordInputContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
     }
 }

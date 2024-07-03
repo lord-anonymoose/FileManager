@@ -9,11 +9,11 @@ import Foundation
 
 class LoginService {
     func passwordExists() -> Bool {
-        return true
+        return false
     }
     
     func passwordCorrect() -> Bool {
-        return true
+        return false
     }
     
     func setPassword() {

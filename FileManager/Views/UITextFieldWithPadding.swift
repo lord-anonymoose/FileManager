@@ -34,6 +34,8 @@ class UITextFieldWithPadding: UITextField {
     override func awakeFromNib() {
         super.awakeFromNib()
 
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
         self.placeholder = "Placeholder"
         self.textColor = textColor
         self.font = .systemFont(ofSize: 16)
