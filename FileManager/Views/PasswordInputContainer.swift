@@ -145,9 +145,27 @@ final class PasswordInputContainer: UIView {
             showSecondPasswordButton.bottomAnchor.constraint(equalTo: secondPasswordTextField.bottomAnchor, constant: -10),
             showSecondPasswordButton.trailingAnchor.constraint(equalTo: firstPasswordTextField.trailingAnchor, constant: -10)
         ])
-
-        
-
     }
     
+    func passwordsMatch() ->  Bool {
+        if let firstPassword = firstPasswordTextField.text, let secondPassword = secondPasswordTextField.text {
+            return firstPassword == secondPassword
+        }
+        return false
+    }
+    
+    func passwordLengthMatch() -> Bool {
+        if let firstPassword = firstPasswordTextField.text {
+            return firstPassword.count >= 4
+        }
+        return false
+    }
+    
+    func password() -> String {
+        if let firstPassword = firstPasswordTextField.text {
+            return firstPassword
+        } else {
+            return ""
+        }
+    }
 }

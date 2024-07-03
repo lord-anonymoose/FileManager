@@ -53,7 +53,7 @@ class LogInViewControlller: UIViewController {
     // MARK: - Actions
     @objc func loginButtonTapped(_ button: UIButton) {
         let loginSerivce = LoginService()
-        if loginSerivce.passwordCorrect() {
+        if loginSerivce.passwordIsCorrect(password: "") {
             let tabBarController = UITabBarController()
             var controllers = [UIViewController]()
             

@@ -12,11 +12,11 @@ class LoginService {
         return false
     }
     
-    func passwordCorrect() -> Bool {
-        return false
+    func passwordIsCorrect(password: String) -> Bool {
+        return true
     }
     
-    func setPassword() {
+    func setPassword(password: String) {
         
     }
 }

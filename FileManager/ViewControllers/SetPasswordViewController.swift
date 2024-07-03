@@ -28,6 +28,15 @@ class SetPasswordViewController: UIViewController {
         return container
     }()
     
+    private lazy var setPasswordButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .green
+        button.setTitle("Set Password", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(setPasswordButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +49,40 @@ class SetPasswordViewController: UIViewController {
     
     // MARK: - Actions
     @objc func setPasswordButtonTapped(_ button: UIButton) {
-        print("setPasswordButtonTapped")
+        guard self.passwordInputContainer.passwordsMatch() else {
+            self.showAlert(message: "Passwords do not match!")
+            return
+        }
+        
+        guard self.passwordInputContainer.passwordLengthMatch() else {
+            self.showAlert(message: "Password should contain at least 4 characters")
+            return
+        }
+        
+        let loginService = LoginService()
+        
+        loginService.setPassword(password: self.passwordInputContainer.password())
+        
+        let tabBarController = UITabBarController()
+        var controllers = [UIViewController]()
+        
+        let folderViewController = FolderViewController()
+        let folderImage = UIImage(systemName: "folder.fill")
+        folderViewController.tabBarItem = UITabBarItem(title: nil, image: folderImage, tag: 0)
+        controllers.append(folderViewController)
+        
+        let settingsViewController = SettingsViewController()
+        let settingsImage = UIImage(systemName: "gear")
+        settingsViewController.tabBarItem = UITabBarItem(title: nil, image: settingsImage, tag: 1)
+        controllers.append(settingsViewController)
+        
+        tabBarController.viewControllers = controllers.map {
+            UINavigationController(rootViewController: $0)
+        }
+        tabBarController.selectedIndex = 0
+        
+        navigationController?.pushViewController(tabBarController, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     
@@ -52,14 +94,24 @@ class SetPasswordViewController: UIViewController {
     
     private func addSubviews() {
         view.addSubview(passwordInputContainer)
+        view.addSubview(setPasswordButton)
     }
     
     private func setupConstraints() {
+        let safeAreaGuide = view.safeAreaLayoutGuide
+        
         NSLayoutConstraint.activate([
             passwordInputContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             passwordInputContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             passwordInputContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordInputContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            setPasswordButton.topAnchor.constraint(equalTo: passwordInputContainer.bottomAnchor, constant: 20),
+            setPasswordButton.heightAnchor.constraint(equalToConstant: 40),
+            setPasswordButton.leadingAnchor.constraint(equalTo: safeAreaGuide.leadingAnchor, constant: 20),
+            setPasswordButton.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -20)
         ])
     }
 }
