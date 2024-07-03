@@ -9,7 +9,7 @@ import Foundation
 
 class LoginService {
     func passwordExists() -> Bool {
-        return false
+        return true
     }
     
     func passwordIsCorrect(password: String) -> Bool {

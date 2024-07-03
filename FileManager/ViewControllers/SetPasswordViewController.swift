@@ -16,23 +16,20 @@ class SetPasswordViewController: UIViewController {
     
     // MARK: - Subviews
     private lazy var emojiView: UIImageView = {
-        let image = UIImage(systemName: "lock.fill")
+        let image = UIImage(systemName: "key.fill")
         let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private lazy var passwordInputContainer: PasswordInputContainer = {
         let container = PasswordInputContainer()
-        container.translatesAutoresizingMaskIntoConstraints = false
         return container
     }()
     
     private lazy var setPasswordButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .green
-        button.setTitle("Set Password", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = CustomButton(customTitle: "Set Password", action: {})
         button.addTarget(self, action: #selector(setPasswordButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -63,26 +60,10 @@ class SetPasswordViewController: UIViewController {
         
         loginService.setPassword(password: self.passwordInputContainer.password())
         
-        let tabBarController = UITabBarController()
-        var controllers = [UIViewController]()
-        
-        let folderViewController = FolderViewController()
-        let folderImage = UIImage(systemName: "folder.fill")
-        folderViewController.tabBarItem = UITabBarItem(title: nil, image: folderImage, tag: 0)
-        controllers.append(folderViewController)
-        
-        let settingsViewController = SettingsViewController()
-        let settingsImage = UIImage(systemName: "gear")
-        settingsViewController.tabBarItem = UITabBarItem(title: nil, image: settingsImage, tag: 1)
-        controllers.append(settingsViewController)
-        
-        tabBarController.viewControllers = controllers.map {
-            UINavigationController(rootViewController: $0)
+        if let navController = navigationController {
+            let loginCoordinator = LoginCoordinator(navigationController: navController)
+            loginCoordinator.start()
         }
-        tabBarController.selectedIndex = 0
-        
-        navigationController?.pushViewController(tabBarController, animated: true)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     
@@ -93,6 +74,7 @@ class SetPasswordViewController: UIViewController {
     }
     
     private func addSubviews() {
+        view.addSubview(emojiView)
         view.addSubview(passwordInputContainer)
         view.addSubview(setPasswordButton)
     }
@@ -101,8 +83,14 @@ class SetPasswordViewController: UIViewController {
         let safeAreaGuide = view.safeAreaLayoutGuide
         
         NSLayoutConstraint.activate([
+            emojiView.centerYAnchor.constraint(equalTo: safeAreaGuide.centerYAnchor, constant: -200),
+            emojiView.heightAnchor.constraint(equalToConstant: 200),
+            emojiView.centerXAnchor.constraint(equalTo: safeAreaGuide.centerXAnchor),
+        ])
+        
+        NSLayoutConstraint.activate([
             passwordInputContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            passwordInputContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            passwordInputContainer.topAnchor.constraint(equalTo: emojiView.bottomAnchor, constant: 150),
             passwordInputContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             passwordInputContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
