@@ -92,7 +92,12 @@ class FolderViewController: UIViewController {
     }
     
     @objc func addPhotoButtonTapped(_ button: UIButton) {
-        showAlert(message: "Not working yet")
+        let picker = UIImagePickerController()
+        //picker.allowsEditing = true
+        picker.delegate = self
+        
+        present(picker, animated: true)
+        //showAlert(message: "Not working yet")
     }
     
     
@@ -194,6 +199,26 @@ extension FolderViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         alert.view.tintColor = UIColor(named: "AccentColor")
         self.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension FolderViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else {
+            print("Returned")
+            return
+        }
+        
+        let imageName = ("\(UUID().uuidString).jpg")
+        let imagePath = directoryService.url.appending(component: imageName)
+        
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            try? imageData.write(to: imagePath)
+            dismiss(animated: true)
+            self.directoryTableView.reloadData()
+            return
+        }
+        showAlert(message: "Couldn't load an image!")
     }
 }
 
