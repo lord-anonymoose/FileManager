@@ -3,16 +3,6 @@
     {
       "filename" : "AppLogo.png",
       "idiom" : "universal"
-    },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "Subject.png",
-      "idiom" : "universal"
     }
   ],
   "info" : {
